@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elena Noir Photography</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+  --primary-color: #f72585;
+  --secondary-color: #3a0ca3;
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Roboto', sans-serif;
+  --spacing-unit: 1rem;
+  --transition-speed: 0.3s;
+  --btn-radius: 4px;
+  --hero-bg: url('path/to/hero-bg.jpg');
+}
+
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.navbar {
+  background-color: var(--surface-color);
+  padding: var(--spacing-unit);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: var(--text-primary);
+  text-decoration: none;
+  margin-right: var(--spacing-unit);
+  transition: color var(--transition-speed);
+}
+
+.navbar a:hover {
+  color: var(--primary-color);
+}
+
+.hero {
+  background: var(--hero-bg) no-repeat center/cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.btn-primary:hover {
+  background-color: #d61c6f;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.btn-secondary:hover {
+  background-color: #31178f;
+}
+
+.card {
+  background-color: var(--surface-color);
+  border-radius: var(--btn-radius);
+  overflow: hidden;
+  transition: transform var(--transition-speed);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card-content {
+  padding: var(--spacing-unit);
+}
+
+.footer {
+  background-color: var(--surface-color);
+  padding: var(--spacing-unit);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+</style>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 60px 0; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; cursor: pointer; aspect-ratio: 4/3; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.3s ease; }
+        .gallery-item:hover img { transform: scale(1.1); filter: brightness(0.7); }
+        .gallery-item .overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+        .gallery-item:hover .overlay { opacity: 1; }
+        .overlay span { color: #fff; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; border: 1px solid #fff; padding: 10px 20px; }
+        
+        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 4px; }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 40px; color: #fff; cursor: pointer; transition: color 0.3s; }
+        .lightbox-close:hover { color: #d4af37; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); font-size: 50px; color: #fff; cursor: pointer; padding: 20px; transition: color 0.3s; user-select: none; }
+        .lightbox-nav:hover { color: #d4af37; }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        
+        .about { padding: 80px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img { width: 100%; border-radius: 8px; filter: grayscale(20%); }
+        .about h2 { font-size: 36px; margin-bottom: 20px; font-weight: 300; }
+        .about p { color: #888; margin-bottom: 15px; }
+        
+        .contact { padding: 80px 0; text-align: center; border-top: 1px solid #222; }
+        .contact h2 { font-size: 36px; margin-bottom: 20px; font-weight: 300; }
+        .contact p { color: #888; margin-bottom: 30px; }
+        .social-links { display: flex; justify-content: center; gap: 20px; }
+        .social-links a { color: #e0e0e0; text-decoration: none; padding: 12px 24px; border: 1px solid #333; border-radius: 4px; transition: all 0.3s; }
+        .social-links a:hover { border-color: #d4af37; color: #d4af37; }
+        
+        @media (max-width: 768px) {
+            .about { grid-template-columns: 1fr; text-align: center; }
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+            .lightbox-nav { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container" style="display:flex;justify-content:space-between;align-items:center;padding:20px;">
+            <img src="https://img.recraft.ai/lVKLXCj0GWFEdGdZmQe0bsaZdOgMUNgp9mK26ucYYiI/rs:fit:1024:1024:0/raw:1/plain/abs://external/images/64d1086e-3050-4d7c-9e52-7dd9b9d42ae6" alt="Logo" class="navbar-logo" style="height:40px;width:auto;">
+            <div style="display:flex;gap:30px;">
+                <a href="#gallery" style="color:#e0e0e0;text-decoration:none;transition:color 0.3s;">Gallery</a>
+                <a href="#about" style="color:#e0e0e0;text-decoration:none;transition:color 0.3s;">About</a>
+                <a href="#contact" style="color:#e0e0e0;text-decoration:none;transition:color 0.3s;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" style="background-image:url('https://replicate.delivery/xezq/MfRGD7JqTL13UCelRW0YYp4g0iPXkOWCeCHkfJ46QXsqE6CZB/out-0.webp');background-size:cover;background-position:center;">
+        <div style="text-align:center;">
+            <h1 style="font-size:clamp(36px,8vw,72px);font-weight:200;letter-spacing:8px;margin-bottom:20px;">ELENA NOIR</h1>
+            <p style="font-size:18px;color:#888;letter-spacing:4px;text-transform:uppercase;">Fine Art Photography</p>
+            <a href="#gallery" class="btn-primary" style="margin-top:40px;display:inline-block;">View Portfolio</a>
+        </div>
+    </section>
+
+    <section id="gallery" class="container">
+        <div class="gallery" id="galleryGrid"></div>
+    </section>
+
+    <section id="about" class="container about">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=600&fit=crop" alt="Elena Noir" class="about-img">
+        <div>
+            <h2>About Me</h2>
+            <p>With over a decade of experience capturing life's most precious moments, I specialize in portrait, landscape, and fine art photography.</p>
+            <p>My work has been featured in numerous galleries and publications worldwide. I believe every photograph tells a story waiting to be discovered.</p>
+            <a href="#contact" class="btn-secondary" style="margin-top:20px;display:inline-block;">Get in Touch</a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Let's Create Together</h2>
+            <p>Available for commissions, collaborations, and exhibitions</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Behance</a>
+                <a href="#">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container" style="text-align:center;">
+            <p>&copy; 2024 Elena Noir Photography. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <span class="lightbox-nav lightbox-prev" id="lightboxPrev">&#10094;</span>
+        <img src="" alt="" id="lightboxImg">
+        <span class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</span>
+    </div>
+
+    <script>
+        const photos = [
+            { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800', title: 'Mountain Dawn' },
+            { src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800', title: 'Forest Light' },
+            { src: 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800', title: 'Serene Valley' },
+            { src: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800', title: 'Golden Hour' },
+            { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800', title: 'Misty Morning' },
+            { src: 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800', title: 'Ancient Woods' },
+            { src: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800', title: 'Waterfall' },
+            { src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800', title: 'Lake Reflection' },
+            { src: 'https://images.unsplash.com/photo-1518173946687-a4c036bc1e95?w=800', title: 'Desert Sunset' }
+        ];
+
+        const gallery = document.getElementById('galleryGrid');
+        let currentIndex = 0;
+
+        photos.forEach((photo, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `<img src="${photo.src}" alt="${photo.title}" loading="lazy"><div class="overlay"><span>View</span></div>`;
+            item.addEventListener('click', () => openLightbox(index));
+            gallery.appendChild(item);
+        });
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImg.src = photos[index].src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigate(dir) {
+            currentIndex = (currentIndex + dir + photos.length) % photos.length;
+            lightboxImg.src = photos[currentIndex].src;
+        }
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxPrev').addEventListener('click', () => navigate(-1));
+        document.getElementById('lightboxNext').addEventListener('click', () => navigate(1));
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigate(-1);
+            if (e.key === 'ArrowRight') navigate(1);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
